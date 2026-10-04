@@ -4,20 +4,20 @@ using namespace std;
 int main()
 {
     cout << "Enter the number : ";
-    int n;
-    cin >> n;
-    int x = n;
-    for (int i = 1; i <= n; i++)
+    int rows;
+    cin >> rows;
+    int spaces = rows;
+    for (int row = 1; row <= rows; row++)
     {
-        for (int k = 1; k <= i; k++)
+        for (int num = 1; num <= row; num++)
         {
-            for (int j = 1; j <= x; j++)
+            for (int space_no = 1; space_no <= spaces; space_no++)
             {
                 cout << " ";
             }
-            cout << k;
+            cout << num;
         }
-        x--;
+        spaces--;
         cout << endl;
     }
 

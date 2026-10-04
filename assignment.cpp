@@ -4,68 +4,67 @@ using namespace std;
 int main()
 {
 
-    int count;
-
+    int base_width;
     do
     {
         cout << "Please enter the number (odd): ";
-        cin >> count;
-    } while (count % 2 == 0);
+        cin >> base_width;
+    } while (base_width % 2 == 0);
 
-    int count_u = count;
-    int half = count / 2;
-    int l = 1;
-    int spaces_u = 0;
-    for (int i = 0; i < half; i++)
+    int upper_row_numbers = base_width;
+    int half_height = base_width / 2;
+    int next_number = 1;
+    int upper_indent = 0;
+    for (int upper_row = 0; upper_row < half_height; upper_row++)
     {
-        for (int k = 0; k < spaces_u; k++)
+        for (int upper_space_step = 0; upper_space_step < upper_indent; upper_space_step++)
         {
             cout << " ";
         }
-        spaces_u += 3;
+        upper_indent += 3;
 
-        for (int j = 0; j < count_u; j++)
+        for (int upper_num_step = 0; upper_num_step < upper_row_numbers; upper_num_step++)
         {
-            if (l < 10)
+            if (next_number < 10)
             {
-                cout << l << "  ";
+                cout << next_number << "  ";
             }
             else
             {
-                cout << l << " ";
+                cout << next_number << " ";
             }
-            l++;
+            next_number++;
         }
-        count_u -= 2;
+        upper_row_numbers -= 2;
         cout << endl;
     }
 
     // DOWN
 
-    int spaces = half * 3;
-    int x = 1;
-    for (int i = 0; i <= half; i++)
+    int lower_indent = half_height * 3;
+    int lower_row_numbers = 1;
+    for (int lower_row = 0; lower_row <= half_height; lower_row++)
     {
 
-        for (int j = 1; j <= spaces; j++)
+        for (int lower_space_step = 1; lower_space_step <= lower_indent; lower_space_step++)
         {
             cout << " ";
         }
-        spaces -= 3;
+        lower_indent -= 3;
 
-        for (int o = 0; o < x; o++)
+        for (int lower_num_step = 0; lower_num_step < lower_row_numbers; lower_num_step++)
         {
-            if (l < 10)
+            if (next_number < 10)
             {
-                cout << l << "  ";
+                cout << next_number << "  ";
             }
             else
             {
-                cout << l << " ";
+                cout << next_number << " ";
             }
-            l++;
+            next_number++;
         }
-        x = x + 2;
+        lower_row_numbers = lower_row_numbers + 2;
 
         cout << endl;
     }
