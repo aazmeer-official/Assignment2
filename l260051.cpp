@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
@@ -28,67 +29,67 @@ int main()
         {
         case 1:
         {
-            int base_width;
+            int hourglass_count;
             do
             {
                 cout << "Please enter the number (odd): ";
-                cin >> base_width;
-            } while (base_width % 2 == 0);
+                cin >> hourglass_count;
+            } while (hourglass_count % 2 == 0);
 
-            int upper_row_numbers = base_width;
-            int half_height = base_width / 2;
-            int next_number = 1;
-            int upper_indent = 0;
-            for (int upper_row = 0; upper_row < half_height; upper_row++)
+            int count_u = hourglass_count;
+            int half_hourglass = hourglass_count / 2;
+            int lowerpart_spaces_hourglass = 1;
+            int spaces_u = 0;
+            for (int i = 0; i < half_hourglass; i++)
             {
-                for (int upper_space_step = 0; upper_space_step < upper_indent; upper_space_step++)
+                for (int k = 0; k < spaces_u; k++)
                 {
                     cout << " ";
                 }
-                upper_indent += 3;
+                spaces_u += 3;
 
-                for (int upper_num_step = 0; upper_num_step < upper_row_numbers; upper_num_step++)
+                for (int j = 0; j < count_u; j++)
                 {
-                    if (next_number < 10)
+                    if (lowerpart_spaces_hourglass < 10)
                     {
-                        cout << next_number << "  ";
+                        cout << lowerpart_spaces_hourglass << "  ";
                     }
                     else
                     {
-                        cout << next_number << " ";
+                        cout << lowerpart_spaces_hourglass << " ";
                     }
-                    next_number++;
+                    lowerpart_spaces_hourglass++;
                 }
-                upper_row_numbers -= 2;
+                count_u -= 2;
                 cout << endl;
             }
 
             // DOWN
 
-            int lower_indent = half_height * 3;
-            int lower_row_numbers = 1;
-            for (int lower_row = 0; lower_row <= half_height; lower_row++)
+            int spaces = half_hourglass * 3;
+            int x = 1;
+            for (int i = 0; i <= half_hourglass; i++)
             {
 
-                for (int lower_space_step = 1; lower_space_step <= lower_indent; lower_space_step++)
+                for (int j = 1; j <= spaces; j++)
                 {
                     cout << " ";
                 }
-                lower_indent -= 3;
+                spaces -= 3;
 
-                for (int lower_num_step = 0; lower_num_step < lower_row_numbers; lower_num_step++)
+                for (int o = 0; o < x; o++)
                 {
-                    if (next_number < 10)
+                    if (lowerpart_spaces_hourglass < 10)
                     {
-                        cout << next_number << "  ";
+                        cout << lowerpart_spaces_hourglass << "  ";
                     }
                     else
                     {
-                        cout << next_number << " ";
+                        cout << lowerpart_spaces_hourglass << " ";
                     }
-                    next_number++;
+                    lowerpart_spaces_hourglass++;
                 }
-                lower_row_numbers = lower_row_numbers + 2;
+                x = x + 2;
 
                 cout << endl;
             }
@@ -97,63 +98,62 @@ int main()
         }
         case 2:
         {
-            // TODO: Number Pyramid Pattern
             cout << "Enter the number : ";
-            int rows;
-            cin >> rows;
-            int spaces = rows;
-            for (int row = 1; row <= rows; row++)
+            int n;
+            cin >> n;
+            int x = n;
+            for (int i = 1; i <= n; i++)
             {
-                for (int num = 1; num <= row; num++)
+                for (int k = 1; k <= i; k++)
                 {
-                    for (int space_no = 1; space_no <= spaces; space_no++)
+                    for (int j = 1; j <= x; j++)
                     {
                         cout << " ";
                     }
-                    cout << num;
+                    cout << k;
                 }
-                spaces--;
+                x--;
                 cout << endl;
             }
+
             break;
         }
         case 3:
         {
-            // TODO: Star Diamond Pattern
-            int total_size;
+            int count;
             cout << "Please enter the value : ";
-            cin >> total_size;
-            int quarter = total_size / 4;
-            int leftover = total_size % 4;
-            int top_rows = quarter, bottom_rows = quarter, mid_upper_rows = quarter, mid_lower_rows = quarter;
-            if (total_size % 2 != 0)
+            cin >> count;
+            int part = count / 4;
+            int remaining = count % 4;
+            int part_U = part, part_l = part, part_MU = part, part_ML = part;
+            if (count % 2 != 0)
             {
-                total_size = total_size - 1;
-                mid_upper_rows += 1;
+                count = count - 1;
+                part_MU += 1;
             }
 
-            if (leftover)
+            if (remaining)
             {
-                leftover /= 2;
-                top_rows += leftover;
-                bottom_rows += leftover;
+                remaining /= 2;
+                part_U += remaining;
+                part_l += remaining;
             }
-            // cout << total_size << " " << quarter << " " << leftover << " " << endl
-            //  << top_rows << " " << bottom_rows << " " << mid_upper_rows << " " << mid_lower_rows;
-            int top_margin = (total_size * 1.5) / 2 - top_rows + 1;
-            for (int top_row = 0; top_row < top_rows; top_row++)
+            // cout << count << " " << part << " " << remaining << " " << endl
+            //  << part_U << " " << part_l << " " << part_MU << " " << part_ML;
+            int count_U_spaces = (count * 1.5) / 2 - part_U + 1;
+            for (int i = 0; i < part_U; i++)
             {
-                for (int margin_no = 1; margin_no < top_margin; margin_no++)
+                for (int l = 1; l < count_U_spaces; l++)
                 {
                     cout << " ";
                 }
 
-                for (int gap_no = top_rows; gap_no > top_row; gap_no--)
+                for (int k = part_U; k > i; k--)
                 {
                     cout << " ";
                 }
 
-                for (int star_no = 1; star_no <= (2 * top_row) + 1; star_no++)
+                for (int j = 1; j <= (2 * i) + 1; j++)
                 {
                     cout << "*";
                 }
@@ -161,60 +161,60 @@ int main()
             }
 
             // MU
-            int mid_upper_stars = 1.5 * total_size;
-            for (int mu_row = 0; mu_row < mid_upper_rows; mu_row++)
+            int part_MU_R = 1.5 * count;
+            for (int i = 0; i < part_MU; i++)
             {
 
-                for (int mu_space = 0; mu_space <= mu_row; mu_space++)
+                for (int k = 0; k <= i; k++)
                 {
                     cout << " ";
                 }
-                for (int mu_star = 0; mu_star < mid_upper_stars; mu_star++)
+                for (int j = 0; j < part_MU_R; j++)
                 {
                     cout << "*";
                 }
-                mid_upper_stars -= 2;
+                part_MU_R -= 2;
                 cout << endl;
             }
 
             // ML
-            int mid_lower_stars = (total_size * 1.5) - (2 * mid_lower_rows) + 2;
-            // cout << mid_upper_stars + 2 << " " << mid_lower_stars;
+            int part_ML_R = (count * 1.5) - (2 * part_ML) + 2;
+            // cout << part_MU_R + 2 << " " << part_ML_R;
 
-            for (int ml_row = 0; ml_row < mid_lower_rows; ml_row++)
+            for (int i = 0; i < part_ML; i++)
             {
 
-                for (int ml_space = mid_lower_rows; ml_space > ml_row; ml_space--)
+                for (int k = part_ML; k > i; k--)
                 {
                     cout << " ";
                 }
 
-                for (int ml_star = 0; ml_star < mid_lower_stars; ml_star++)
+                for (int j = 0; j < part_ML_R; j++)
                 {
                     cout << "*";
                 }
-                mid_lower_stars += 2;
+                part_ML_R += 2;
                 cout << endl;
             }
 
             // // DOWN
-            int bottom_shrink = bottom_rows - 1;
-            for (int bottom_row = 0; bottom_row < bottom_rows; bottom_row++)
+            int x = part_l - 1;
+            for (int i = 0; i < part_l; i++)
             {
-                for (int bottom_margin_no = 1; bottom_margin_no < top_margin; bottom_margin_no++)
+                for (int l = 1; l < count_U_spaces; l++)
                 {
                     cout << " ";
                 }
-                for (int bottom_space = 0; bottom_space <= bottom_row; bottom_space++)
+                for (int k = 0; k <= i; k++)
                 {
                     cout << " ";
                 }
 
-                for (int bottom_star = 0; bottom_star < (2 * bottom_shrink) + 1; bottom_star++)
+                for (int j = 0; j < (2 * x) + 1; j++)
                 {
                     cout << "*";
                 }
-                bottom_shrink--;
+                x--;
 
                 cout << endl;
             }
@@ -222,24 +222,74 @@ int main()
         }
         case 4:
         {
-            // TODO: Square Spiral Pattern
+            int N;
+            cout << "Please Enter the value : ";
+            cin >> N;
+            for (int row = 0; row < N; row++)
+            {
+                for (int col = 0; col < N; col++)
+                {
+                    int n = N, start = 1, r = row, c = col;
+                    int value;
+
+                    // Making the box small
+                    while (r > 0 && c > 0 && r < n - 1 && c < n - 1)
+                    {
+                        start = start + 4 * n - 4;
+                        n = n - 2;
+                        r--;
+                        c--;
+                    }
+
+                    // TOP
+                    if (r == 0)
+                    {
+                        value = start + c;
+                    }
+
+                    // Left
+                    else if (c == 0)
+                    {
+                        value = 4 * n - r - 3 + (start - 1);
+                    }
+
+                    // Right
+                    else if (c == n - 1)
+                    {
+                        value = (n - 1) + r + start;
+                    }
+                    // Bottom
+                    else if (r = n - 1)
+                    {
+                        value = (start - 1) + 3 * n - 2 - c;
+                    }
+                    if (value < N)
+                    {
+                        cout << value << "  ";
+                    }
+                    else
+                    {
+                        cout << value << " ";
+                    }
+                }
+                cout << endl;
+            }
             break;
         }
         case 5:
         {
-            // TODO: Kth Smallest Negative in Window
             cout << "Please Enter the size of array : ";
-            int size;
-            cin >> size;
-            int numbers[1000] = {};
+            int n;
+            cin >> n;
+            int arr[1000] = {};
             cout << "Please Enter the values of ARRAY : ";
-            for (int idx = 0; idx < size; idx++)
+            for (int i = 0; i < n; i++)
             {
-                cin >> numbers[idx];
+                cin >> arr[i];
             }
 
-            int window[1000] = {};
-            int result[1000] = {};
+            int arr2[1000] = {};
+            int arr3[1000] = {};
             int k;
             cout << "Enter the value of k : ";
             cin >> k;
@@ -247,52 +297,52 @@ int main()
             cout << "Enter the value of x : ";
             cin >> x;
             x -= 1;
-            int window_start = 0, window_end = k;
-            while (window_end <= size)
+            int start = 0, end = k;
+            while (end <= n)
             {
-                int pos = window_start;
-                while (pos < window_end)
+                int start2 = start;
+                while (start2 < end)
                 {
-                    for (int copy_idx = 0; copy_idx < k; copy_idx++)
+                    for (int i = 0; i < k; i++)
                     {
-                        window[copy_idx] = numbers[pos];
-                        pos++;
+                        arr2[i] = arr[start2];
+                        start2++;
                     }
-                    for (int pass_no = 0; pass_no < k; pass_no++)
+                    for (int swapping = 0; swapping < k; swapping++)
                     {
-                        int left = 0, right = k - pass_no - 1;
-                        while (left < right)
+                        int start_sorting = 0, end_sorting = k - swapping - 1;
+                        while (start_sorting < end_sorting)
                         {
-                            if (window[left] > window[right])
+                            if (arr2[start_sorting] > arr2[end_sorting])
                             {
-                                swap(window[left], window[right]);
+                                swap(arr2[start_sorting], arr2[end_sorting]);
                             }
-                            left++;
+                            start_sorting++;
                         }
                     }
                     // For Printing Windows
 
                     // cout << "[";
-                    // for (int print_idx = 0; print_idx < k; print_idx++)
+                    // for (int j = 0; j < k; j++)
                     // {
-                    //     cout << window[print_idx] << " ";
+                    //     cout << arr2[j] << " ";
                     // }
                     // cout << "]";
 
-                    if (x >= k || window[x] >= 0)
+                    if (x >= k || arr2[x] >= 0)
                     {
-                        window[x] = 0;
+                        arr2[x] = 0;
                     }
-                    result[window_start] = window[x];
+                    arr3[start] = arr2[x];
                 }
                 // cout << endl;
-                window_start++;
-                window_end++;
+                start++;
+                end++;
             }
             cout << "[";
-            for (int out_idx = 0; out_idx < size - k + 1; out_idx++)
+            for (int i = 0; i < n - k + 1; i++)
             {
-                cout << result[out_idx] << " ";
+                cout << arr3[i] << " ";
             }
             cout << "]";
 
@@ -300,198 +350,193 @@ int main()
         }
         case 6:
         {
-            // TODO: Seismic Cross-Tomography
-            int grid[25] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
-            int target_row, target_col;
+            int arr[25] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25};
+            int row, column;
             do
             {
                 cout << "Enter the value of Row : ";
-                cin >> target_row;
-            } while (target_row < 0 || target_row > 4);
+                cin >> row;
+            } while (row < 0 || row > 4);
             do
             {
                 cout << "Enter the value of Column : ";
-                cin >> target_col;
-            } while (target_col < 0 || target_col > 4);
-            int target_id = target_row * 5 + target_col;
-            int target_value = grid[target_id];
-            int above, below, west, east;
+                cin >> column;
+            } while (column < 0 || column > 4);
+            int index = row * 5 + column;
+            int value = arr[index];
+            int top, bottom, left, right;
 
-            above = target_value - 5;
-            below = target_value + 5;
-            east = target_value + 1;
-            west = target_value - 1;
+            top = value - 5;
+            bottom = value + 5;
+            right = value + 1;
+            left = value - 1;
 
             // EDGE CASES
             // TOP
-            if (target_value >= 1 && target_value <= 5)
+            if (value >= 1 && value <= 5)
             {
-                above = 0;
+                top = 0;
             }
 
             // Right
-            if (target_value % 5 == 0)
+            if (value % 5 == 0)
             {
-                east = 0;
+                right = 0;
             }
 
             // Left
-            if (target_value % 5 == 1)
+            if (value % 5 == 1)
             {
-                west = 0;
+                left = 0;
             }
 
             // Bottom
-            if (target_value >= 21 && target_value <= 25)
+            if (value >= 21 && value <= 25)
             {
-                below = 0;
+                bottom = 0;
             }
 
-            // cout << above << " " << west << " " << below << " " << east;
-            int neighbour_sum = above + east + west + below;
-            cout << "Target Id: " << target_id << endl;
-            cout << "Target Value: " << target_value << endl;
-            cout << "Crossectional Values Sum : " << neighbour_sum;
+            // cout << top << " " << left << " " << bottom << " " << right;
+            int sum = top + right + left + bottom;
+            cout << "Target Id: " << index << endl;
+            cout << "Target Value: " << value << endl;
+            cout << "Crossectional Values Sum : " << sum;
 
             break;
         }
         case 7:
         {
-            // TODO: Frequency Sort
-            int input_data[1000] = {};
-            int total_items;
+            int arr[1000] = {};
+            int n;
             cout << "Please Specify the size of Array : ";
-            cin >> total_items;
+            cin >> n;
             cout << "Please Enter the values of Array : ";
-            for (int value_frequency = 0; value_frequency < total_items; value_frequency++)
+            for (int i = 0; i < n; i++)
             {
-                cin >> input_data[value_frequency];
+                cin >> arr[i];
             }
 
-            int frequency[1000] = {};
-            int smallest = input_data[0];
-            int largest = input_data[0];
+            int arr2[1000] = {};
+            int min = arr[0];
+            int max = arr[0];
             // For finding min and max
-            for (int item_no = 0; item_no < total_items; item_no++)
+            for (int i = 0; i < n; i++)
             {
-                if (smallest > input_data[item_no])
+                if (min > arr[i])
                 {
-                    smallest = input_data[item_no];
+                    min = arr[i];
                 }
-                if (largest < input_data[item_no])
+                if (max < arr[i])
                 {
-                    largest = input_data[item_no];
+                    max = arr[i];
                 }
             }
 
             // For finding the frequency
-            for (int candidate = smallest; candidate <= largest; candidate++)
+            for (int i = min; i <= max; i++)
             {
-                int times_seen = 0;
-                for (int scan_no = 0; scan_no < total_items; scan_no++)
+                int count = 0;
+                for (int j = 0; j < n; j++)
                 {
-                    if (input_data[scan_no] == candidate)
+                    if (arr[j] == i)
                     {
-                        times_seen++;
+                        count++;
                     }
-                    frequency[candidate] = times_seen;
+                    arr2[i] = count;
                 }
             }
 
             // Finding the max index
-            int write_pos = 0;
-            for (int round_no = 0; round_no <= largest; round_no++)
+            int counter = 0;
+            for (int k = 0; k <= max; k++)
             {
-                int best_number = 0;
-                for (int outer_no = 0; outer_no <= largest; outer_no++)
+                int idx = 0;
+                for (int i = 0; i <= max; i++)
                 {
-                    for (int inner_no = outer_no + 1; inner_no <= largest; inner_no++)
+                    for (int j = i + 1; j <= max; j++)
                     {
-                        if (frequency[inner_no] > frequency[best_number])
+                        if (arr2[j] > arr2[idx])
                         {
-                            best_number = inner_no;
+                            idx = j;
                         }
                     }
                 }
-                int best_count = frequency[best_number];
+                int value = arr2[idx];
 
-                for (int fill_no = 0; fill_no < best_count; fill_no++)
+                for (int l = 0; l < value; l++)
                 {
-                    input_data[write_pos] = best_number;
-                    write_pos++;
+                    arr[counter] = idx;
+                    counter++;
                 }
 
-                frequency[best_number] = 0;
+                arr2[idx] = 0;
             }
 
             // Frequency Sorted Array
 
             cout << "[";
-            for (int show_no = 0; show_no < total_items; show_no++)
+            for (int i = 0; i < n; i++)
             {
-                cout << input_data[show_no] << ", ";
+                cout << arr[i] << ", ";
             }
             cout << "]";
             break;
         }
         case 8:
         {
-            // TODO: Second-Next/Second-Prev Product
-            int original[1000] = {};
-            int length;
+            int arr[1000] = {};
+            int n;
             cout << "Please enter the length of array : ";
-            cin >> length;
+            cin >> n;
             cout << "Please Enter the values of Array : ";
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < n; i++)
             {
-                cin >> original[i];
+                cin >> arr[i];
             }
 
-            int updated[1000] = {};
-            for (int current = 0; current < length; current++)
+            int arr2[1000] = {};
+            for (int i = 0; i < n; i++)
             {
-                // cout << original[current] << " ";
-                int second_prev = current - 2;
-                int second_next = current + 2;
-                if (second_next >= length)
+                // cout << arr[i] << " ";
+                int prev = i - 2;
+                int next = i + 2;
+                if (next >= n)
                 {
-                    second_next = second_next % length;
+                    next = next % n;
                 }
-                if (second_prev < 0)
+                if (prev < 0)
                 {
-                    second_prev = length + second_prev;
+                    prev = n + prev;
                 }
-                updated[current] = original[second_prev] * original[second_next];
-                // cout << original[second_prev] << " " << original[current] << " " << original[second_next] << endl;
+                arr2[i] = arr[prev] * arr[next];
+                // cout << arr[prev] << " " << arr[i] << " " << arr[next] << endl;
             }
-            for (int copy_at = 0; copy_at < length; copy_at++)
+            for (int i = 0; i < n; i++)
             {
-                original[copy_at] = updated[copy_at];
+                arr[i] = arr2[i];
             }
 
             // Printing values
             cout << "[";
-            for (int print_at = 0; print_at < length; print_at++)
+            for (int i = 0; i < n; i++)
             {
-                cout << original[print_at] << " ";
+                cout << arr[i] << " ";
             }
             cout << "]";
             break;
         }
         case 9:
         {
-            // TODO: Find Non-Duplicate Element
-            int arr_xor[] = {4, 2, 4, 5, 2};
-            for (int xor_step = 1; xor_step < sizeof(arr_xor) / sizeof(arr_xor[0]); xor_step++)
+            int arr[] = {4, 2, 4, 5, 2};
+            for (int i = 1; i < sizeof(arr) / sizeof(arr[0]); i++)
             {
-                arr_xor[0] ^= arr_xor[xor_step];
+                arr[0] ^= arr[i];
             }
-            cout << arr_xor[0];
+            cout << arr[0];
             break;
         }
         case 10:
         {
-            // TODO: Student Performance Predictor
             cout << "Please Define the total number of students : ";
             int n;
             cin >> n;
@@ -548,7 +593,6 @@ int main()
         }
         }
         cout << endl;
-
     } while (choice != 0);
 
     return 0;
